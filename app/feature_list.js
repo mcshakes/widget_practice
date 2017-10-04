@@ -1,5 +1,6 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
+import SubFeatureList from "./subfeature_list.js"
 
 class FeatureList extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class FeatureList extends React.Component {
                 <div>
                   <li key={index}>{feature.title}</li>
                   <button onClick={this.onClick.bind(this)}></button>
-                  {this.state.childVisible ? <Child subfeatures={feature.subfeatures}/> : null}
+                  {this.state.childVisible ? <SubFeatureList subfeatures={feature.subfeatures}/> : null}
                 </div>
               )
             }
@@ -43,22 +44,6 @@ class FeatureList extends React.Component {
   }
 }
 
-class Child extends React.Component {
-  render() {
-    console.log(this.props.subfeatures)
-    return (
-      <div>
-        {this.props.subfeatures.map((subfeat,index) => {
-          if (subfeat.presence === false) {
-            return <li key={index}> Sorry, but {subfeat.title} is not available </li>
-          }
 
-
-          return <li key={index}>{subfeat.title } </li>
-        })}
-      </div>
-    )
-  }
-}
 
 export default FeatureList;
