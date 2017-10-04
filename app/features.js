@@ -10,7 +10,7 @@ class Features extends React.Component {
     const camp_features = FEATURES
     return (
       <div>
-        <h2>Hey! Our Features:</h2>
+        <h2>Campsite Features and Amenities</h2>
 
         <FeatureList features={camp_features} />
       </div>
