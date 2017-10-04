@@ -8,7 +8,6 @@ class Features extends React.Component {
 
   render() {
     const camp_features = FEATURES
-    console.log(camp_features)
     return (
       <div>
         <h2>Hey! Our Features:</h2>

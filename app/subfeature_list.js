@@ -2,6 +2,18 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 
 class SubFeatureList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      childVisible: false
+    }
+  }
+
+  onClick() {
+    // console.log()
+    this.setState({childVisible: !this.state.childVisible});
+  }
+
   render() {
     console.log(this.props.subfeatures)
     return (
