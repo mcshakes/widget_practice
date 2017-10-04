@@ -7,10 +7,19 @@ import FeatureList from "./feature_list.js"
 class Features extends React.Component {
 
   render() {
+    const divStyle = {
+      padding: "50px"
+    };
+
+    const headerStyle = {
+      textAlign: "center",
+      fontFamily:'Space Mono'
+    };
+
     const camp_features = FEATURES
     return (
-      <div>
-        <h2>Campsite Features and Amenities</h2>
+      <div className="inner-div">
+        <h2 style={headerStyle}>Campsite Features and Amenities</h2>
 
         <FeatureList features={camp_features} />
       </div>

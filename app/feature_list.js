@@ -22,11 +22,12 @@ class FeatureList extends React.Component {
       background: "yellow",
       margin: '0.5em',
     };
-    
+
     const listStyle = {
       fontSize: "20px",
       fontWeight: "200",
-      fontFamily:'Space Mono'
+      fontFamily:'Space Mono',
+      fontStyle: "italic"
     };
 
     return (

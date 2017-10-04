@@ -6,8 +6,12 @@ import "./style.scss"
 
 class App extends React.Component {
   render() {
+    const style = {
+      padding: "30px",
+    };
+
     return (
-      <div>
+      <div style={style}>
         <Features />
       </div>
     )
