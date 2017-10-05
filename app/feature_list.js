@@ -1,6 +1,6 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
-import SubFeatureList from "./subfeature_list.js"
+
 import ChildNode from "./child_node.js"
 class FeatureList extends React.Component {
 
@@ -19,9 +19,12 @@ class FeatureList extends React.Component {
       fontStyle: "italic"
     };
 
-    let nodes = allFeatures.map((feature) => {
+    let featureNodes = allFeatures.map((feature) => {
       return (
-        <ChildNode node={feature} children={feature.subfeatures} />
+        <ChildNode node={feature}
+
+          children={feature.subfeatures}
+          />
       );
     });
 
@@ -29,7 +32,7 @@ class FeatureList extends React.Component {
       <div className="row" >
         <div className="all-features" style={divStyle}>
           <ul style={listStyle}>
-            {nodes}
+            {featureNodes}
           </ul>
         </div>
       </div>

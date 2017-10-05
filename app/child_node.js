@@ -2,6 +2,7 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 
 class ChildNode extends React.Component {
+  
   render() {
     let childnodes = null;
 
@@ -12,7 +13,7 @@ class ChildNode extends React.Component {
         );
       })
     }
-    console.log(this.props)
+    console.log(this.props.children)
     return (
       <li>
         <span>{this.props.node.title}</span>
