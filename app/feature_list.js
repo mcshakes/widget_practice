@@ -19,11 +19,13 @@ class FeatureList extends React.Component {
       fontStyle: "italic"
     };
 
-    let featureNodes = allFeatures.map((feature) => {
+    let featureNodes = allFeatures.map((feature, index) => {
       return (
         <ChildNode node={feature}
 
           children={feature.subfeatures}
+
+          key={index}
           />
       );
     });

@@ -2,9 +2,23 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 
 class ChildNode extends React.Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = { childVisible: false }
+  }
+
+  handleCollapse() {
+    console.log("Open/Close: " + this.props.children.title);
+    this.setState({childVisible: !this.state.childVisible});
+    return false;
+  }
+
+  handleFilter() {
+    console.log("Filter ID:" + this.props.children)
+  }
+
   render() {
-    let childnodes = null;
+    let childnodes;
 
     if(this.props.children) {
       childnodes = this.props.children.map((childnode) => {
@@ -13,7 +27,7 @@ class ChildNode extends React.Component {
         );
       })
     }
-    console.log(this.props.children)
+    // console.log(this.props)
     return (
       <li>
         <span>{this.props.node.title}</span>
