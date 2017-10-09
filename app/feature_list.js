@@ -28,6 +28,8 @@ class FeatureList extends React.Component {
               children={feature.subfeatures}
 
               key={index}
+
+              titleClick={this.props.titleClick}
             />
           </li>
         </div>
