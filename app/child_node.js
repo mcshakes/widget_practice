@@ -10,25 +10,23 @@ class ChildNode extends React.Component {
   render() {
     let childnodes = null;
 
-    // if (this.props.children) {
-    //   childnodes = this.props.children.map((childnode) => {
-    //     return (
-    //       <ChildNode node={childnode} children={childnode.subfeatures} />
-    //     );
-    //   })
-    // }
+    if (this.props.children) {
+      childnodes = this.props.children.map((childnode) => {
+        return (
+          <ChildNode node={childnode} children={childnode.subfeatures} />
+        );
+      })
+    }
 
     if (this.state.childVisible) {
       childnodes = (<ChildNode node={childnode} children={childnode.subfeatures} />)
     }
-https://stackoverflow.com/questions/34867236/react-recursively-render-nested-elements
     return (
       <div>
         <li>
           <span>
-            <a rel="{this.props.children.id}" onClick={this.handleCollapse.bind(this)}>{this.props.node.title}</a>
+            {this.props.node.title}
           </span>
-          <input value="" type="checkbox" onClick={this.handleFilter.bind(this)} />
           { childnodes ?
             <ul>{childnodes}</ul>
             : null }
