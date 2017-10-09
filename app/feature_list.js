@@ -21,12 +21,16 @@ class FeatureList extends React.Component {
 
     let featureNodes = allFeatures.map((feature, index) => {
       return (
-        <ChildNode node={feature}
+        <div>
+          <li>
+            <ChildNode node={feature}
 
-          children={feature.subfeatures}
+              children={feature.subfeatures}
 
-          key={index}
-          />
+              key={index}
+            />
+          </li>
+        </div>
       );
     });
 

@@ -7,34 +7,33 @@ class ChildNode extends React.Component {
     this.state = { childVisible: false }
   }
 
-  handleCollapse() {
-    console.log("Open/Close: " + this.props.children.title);
-    this.setState({childVisible: !this.state.childVisible});
-    return false;
-  }
-
-  handleFilter() {
-    console.log("Filter ID:" + this.props.children)
-  }
-
   render() {
-    let childnodes;
+    let childnodes = null;
 
-    if(this.props.children) {
-      childnodes = this.props.children.map((childnode) => {
-        return (
-          <ChildNode node={childnode} children={childnode.subfeatures} />
-        );
-      })
+    // if (this.props.children) {
+    //   childnodes = this.props.children.map((childnode) => {
+    //     return (
+    //       <ChildNode node={childnode} children={childnode.subfeatures} />
+    //     );
+    //   })
+    // }
+
+    if (this.state.childVisible) {
+      childnodes = (<ChildNode node={childnode} children={childnode.subfeatures} />)
     }
-    // console.log(this.props)
+https://stackoverflow.com/questions/34867236/react-recursively-render-nested-elements
     return (
-      <li>
-        <span>{this.props.node.title}</span>
-        { childnodes ?
-          <ul>{childnodes}</ul>
-        : null }
-      </li>
+      <div>
+        <li>
+          <span>
+            <a rel="{this.props.children.id}" onClick={this.handleCollapse.bind(this)}>{this.props.node.title}</a>
+          </span>
+          <input value="" type="checkbox" onClick={this.handleFilter.bind(this)} />
+          { childnodes ?
+            <ul>{childnodes}</ul>
+            : null }
+          </li>
+      </div>
     )
   }
 }
