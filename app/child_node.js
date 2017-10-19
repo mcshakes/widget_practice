@@ -9,7 +9,7 @@ class ChildNode extends React.Component {
   };
 
   handleChildClick() {
-    this.setState({childVisible: true})
+    this.setState({childVisible: !this.state.childVisible})
   }
 
   childNodes() {
@@ -20,13 +20,12 @@ class ChildNode extends React.Component {
           node={feature}
           show={this.state.childVisible}
           children={feature.subfeatures}
-          key={`nested-${index}`}
+          key={`${feature.title}-${index}`}
         />
       )
       })
     return components;
   }
-
 
   render() {
     const buttonStyle = {
@@ -50,8 +49,6 @@ class ChildNode extends React.Component {
     if (!this.props.show) {
       return null;
     }
-    let childNodes = null;
-
 
     return (
       <div>
