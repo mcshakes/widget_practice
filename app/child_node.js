@@ -14,19 +14,37 @@ class ChildNode extends React.Component {
 
   childNodes() {
     const components = [];
-    this.props.children.map((feature, index) => {
-      components.push(
-        <ChildNode
-        node={feature}
-        show={this.state.childVisible}
-        children={feature.subfeatures}
-        key={`nested-${index}`}
-      />
-    )
-    })
+      this.props.children.map((feature, index) => {
+        components.push(
+          <ChildNode
+          node={feature}
+          show={this.state.childVisible}
+          children={feature.subfeatures}
+          key={`nested-${index}`}
+        />
+      )
+      })
     return components;
   }
+
+
   render() {
+    const buttonStyle = {
+      fontSize: ".5em",
+      lineHeight: "15px",
+      padding: "10px 22px 11px 22px",
+      boxSizing: "border-box",
+      fontWeight: "700",
+      border: "solid 3px blue",
+      color: "blue",
+      background: "transparent",
+      borderRadius: "30px",
+      transition: "all ease-out .2s",
+      cursor: "pointer",
+      outline: "none",
+      marginRight: "5px"
+    };
+
     const {childVisible} = this.state;
 
     if (!this.props.show) {
@@ -34,23 +52,13 @@ class ChildNode extends React.Component {
     }
     let childNodes = null;
 
-    // if (this.props.children.length > 0) {
-      // childNodes = this.props.children.map(getSubfeatureNode, this);
-      // console.log("TRUE")
-    // }
-
-    // childNodes = this.props.children.map((childnode) => {
-    //   return (
-    //     <ChildNode node={childnode} children={childnode.subfeatures} onClick={this.handleChildClick.bind(this)}/>
-    //   );
-    // })
 
     return (
       <div>
           <span>
             {this.props.node.title}
           </span>
-          <button onClick={this.handleChildClick}>Show Child</button>
+          <button style={buttonStyle} onClick={this.handleChildClick}>Show Child</button>
           <ul>
             { this.childNodes() }
           </ul>
