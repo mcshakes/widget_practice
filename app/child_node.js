@@ -48,7 +48,7 @@ class ChildNode extends React.Component {
 
     if (!this.props.show) {
       return null;
-    }
+  }
 
     return (
       <div>
