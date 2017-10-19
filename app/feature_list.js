@@ -23,15 +23,14 @@ class FeatureList extends React.Component {
 
     let featureNodes = allFeatures.map((feature, index) => {
       return (
-        <div>
+        <div key={index}>
           <li>
             <ChildNode node={feature}
-
+              show={true}
               children={feature.subfeatures}
 
-              key={index}
             />
-            <button onClick={onClick}>Show Child</button>
+
           </li>
         </div>
       );
