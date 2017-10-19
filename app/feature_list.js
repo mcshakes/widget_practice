@@ -19,6 +19,8 @@ class FeatureList extends React.Component {
       fontStyle: "italic"
     };
 
+    const {onClick} = this.props;
+
     let featureNodes = allFeatures.map((feature, index) => {
       return (
         <div>
@@ -28,9 +30,8 @@ class FeatureList extends React.Component {
               children={feature.subfeatures}
 
               key={index}
-
-              titleClick={this.props.titleClick}
             />
+            <button onClick={onClick}>Show Child</button>
           </li>
         </div>
       );

@@ -7,35 +7,38 @@ class ChildNode extends React.Component {
     this.state = { childVisible: false }
   };
 
-  handleClick() {
-    this.props.titleClick(this.props.node)
+  handleChildClick() {
+    this.setState({childVisible: true})
   }
-  // so you can click on this node and open up the children
+
   render() {
-    console.log(this.props.node)
-    let childnodes = null;
+    // console.log(this.props.children)
+    const {childVisible} = this.state;
 
-    if (this.props.children && this.props.children.length > 0) {
-      this.props.children
+    if (childVisible) {
+      return null;
     }
+    let childNodes = null;
 
-    // NOTE: Bottom returns the children
-    // childnodes = this.props.children.map((childnode) => {
-    //   return (
-    //     <ChildNode node={childnode} children={childnode.subfeatures} />
-    //   );
-    // })
-    // if (this.state.childVisible) {
-    //   childnodes = (<ChildNode node={childnode} children={childnode.subfeatures} />)
+    // if (this.props.children.length > 0) {
+      // childNodes = this.props.children.map(getSubfeatureNode, this);
+      // console.log("TRUE")
     // }
+
+    childNodes = this.props.children.map((childnode) => {
+      return (
+        <ChildNode node={childnode} children={childnode.subfeatures} onClick={this.handleChildClick.bind(this)}/>
+      );
+    })
+
     return (
       <div>
         <li>
           <span>
             {this.props.node.title}
           </span>
-          { childnodes ?
-            <ul>{childnodes}</ul>
+          { childNodes ?
+            <ul>{childNodes}</ul>
             : null }
           </li>
       </div>
