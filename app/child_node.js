@@ -15,16 +15,18 @@ class ChildNode extends React.Component {
   childNodes() {
     const components = [];
     this.props.children.map((feature, index) => {
-      components.push(<ChildNode
+      components.push(
+        <ChildNode
         node={feature}
         show={this.state.childVisible}
         children={feature.subfeatures}
         key={`nested-${index}`}
-      />)
+      />
+    )
     })
+    return components;
   }
   render() {
-    
     const {childVisible} = this.state;
 
     if (!this.props.show) {
