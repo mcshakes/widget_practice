@@ -3,11 +3,14 @@ import axios from "axios";
 
 const Search = () => {
     const [term, setTerm] = useState("");
+    const [results, setResults] = useState([]);
+
+    console.log(results)
 
     useEffect(() => {
         // console.log("RUN AFTER EVERY CHANGE to "term" AND AT INITIAL RENDER")
         const fetchWikiData = async () => {
-            await axios.get("https://en.wikipedia.org/w/api.php", {
+            const {data} = await axios.get("https://en.wikipedia.org/w/api.php", {
                 params: {
                     action: "query",
                     list: "search",
@@ -16,11 +19,14 @@ const Search = () => {
                     srsearch: term
                 }
             })
+
+            setResults(data)
         }
         //  above params form => ?action=query&list=search&format=json&srsearch=programming
 
-        fetchWikiData();
-
+        if (term) {
+            fetchWikiData();
+        }
     }, [term]);
 
     return (
