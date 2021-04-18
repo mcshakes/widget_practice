@@ -5,10 +5,7 @@ const Search = () => {
     const [term, setTerm] = useState("");
     const [results, setResults] = useState([]);
 
-    console.log(results)
-
     useEffect(() => {
-        // console.log("RUN AFTER EVERY CHANGE to "term" AND AT INITIAL RENDER")
         const fetchWikiData = async () => {
             const {data} = await axios.get("https://en.wikipedia.org/w/api.php", {
                 params: {
@@ -20,7 +17,7 @@ const Search = () => {
                 }
             })
 
-            setResults(data)
+            setResults(data.query.search)
         }
         //  above params form => ?action=query&list=search&format=json&srsearch=programming
 
@@ -28,6 +25,18 @@ const Search = () => {
             fetchWikiData();
         }
     }, [term]);
+
+    const renderedResults = results.map((result) => {
+        return (
+            <div key={result.pageid} className="item">
+                <div className="content">
+                    <div className="header">{result.title}</div>
+
+                    {result.snippet}
+                </div>
+            </div>
+        )
+    })
 
     return (
         <div>
@@ -40,6 +49,10 @@ const Search = () => {
                             onChange ={e => setTerm(e.target.value)}
                         />
                 </div>
+            </div>
+
+            <div className="ui celled list">
+                {renderedResults}
             </div>
         </div>
 
