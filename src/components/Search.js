@@ -21,7 +21,7 @@ const Search = () => {
         }
         //  above params form => ?action=query&list=search&format=json&srsearch=programming
 
-        if (term && !results.length) { // if first time component is rendered
+        if (term && !results.length) { 
             fetchWikiData()
         } else {
             const timeoutId = setTimeout(() => {
@@ -35,7 +35,7 @@ const Search = () => {
             };
         }
         
-    }, [term]);
+    }, [term, results.length]); // dependency array whines if no results.length. 
 
     const renderedResults = results.map((result) => {
         return (
