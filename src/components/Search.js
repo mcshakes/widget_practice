@@ -21,14 +21,18 @@ const Search = () => {
         }
         //  above params form => ?action=query&list=search&format=json&srsearch=programming
 
-        const timeoutId = setTimeout(() => {
-            if (term) {
-                fetchWikiData();
-            }
-        }, 500);
-
-        return () => {
-            clearTimeout(timeoutId);
+        if (term && !results.length) { // if first time component is rendered
+            fetchWikiData()
+        } else {
+            const timeoutId = setTimeout(() => {
+                if (term) {
+                    fetchWikiData();
+                }
+            }, 500);
+    
+            return () => {
+                clearTimeout(timeoutId);
+            };
         }
         
     }, [term]);
